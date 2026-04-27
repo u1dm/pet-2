@@ -43,7 +43,7 @@ class Router:
         self.routes: list[tuple[str, re.Pattern[str], Handler]] = []
 
     def add(self, method: str, pattern: str, handler: Handler) -> None:
-        regex = pattern.rstrip("/")
+        regex = "/" if pattern == "/" else pattern.rstrip("/")
         regex = re.sub(r"{([a-zA-Z_][a-zA-Z0-9_]*):path}", r"(?P<\1>.+)", regex)
         regex = re.sub(r"{([a-zA-Z_][a-zA-Z0-9_]*)}", r"(?P<\1>[^/]+)", regex)
         regex = "^" + regex + "$"

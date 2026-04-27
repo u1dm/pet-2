@@ -34,6 +34,14 @@ class EventTests(unittest.TestCase):
 
 
 class FrontendTests(unittest.TestCase):
+    def test_gateway_serves_frontend_index(self):
+        ctx = type("Ctx", (), {"path_params": {}})()
+        status, response = static_file(ctx)
+        self.assertEqual(status, 200)
+        self.assertIsInstance(response, RawResponse)
+        self.assertIn(b"MicroShop Console", response.body)
+        self.assertEqual(response.content_type, "text/html; charset=utf-8")
+
     def test_gateway_serves_frontend_asset(self):
         ctx = type("Ctx", (), {"path_params": {"asset": "app.js"}})()
         status, response = static_file(ctx)
