@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MicroShop Console</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img">
+              <path d="M8 16h32l-3 24H11L8 16Z"></path>
+              <path d="M17 16a7 7 0 0 1 14 0"></path>
+              <path d="M17 27h14"></path>
+            </svg>
+          </div>
+          <div>
+            <h1>MicroShop Console</h1>
+            <p>Users, catalog, orders and notifications</p>
+          </div>
+        </div>
+        <div class="status-strip" id="service-status" aria-live="polite"></div>
+      </header>
+
+      <main class="layout">
+        <section class="panel command-panel" aria-labelledby="quick-actions-title">
+          <div class="panel-head">
+            <h2 id="quick-actions-title">Create Records</h2>
+            <button class="icon-button" id="refresh-button" type="button" title="Refresh data" aria-label="Refresh data">
+              <span aria-hidden="true">↻</span>
+            </button>
+          </div>
+
+          <div class="forms-grid">
+            <form id="user-form" class="form-block">
+              <h3>User</h3>
+              <label>Email<input name="email" type="email" value="ada@example.com" required></label>
+              <label>Name<input name="name" type="text" value="Ada Lovelace" required></label>
+              <button type="submit">Create User</button>
+            </form>
+
+            <form id="product-form" class="form-block">
+              <h3>Product</h3>
+              <label>SKU<input name="sku" type="text" value="BOOK-1" required></label>
+              <label>Name<input name="name" type="text" value="Architecture Book" required></label>
+              <div class="field-row">
+                <label>Price<input name="price" type="number" min="0" step="0.01" value="24.90" required></label>
+                <label>Stock<input name="stock" type="number" min="0" step="1" value="5" required></label>
+              </div>
+              <button type="submit">Create Product</button>
+            </form>
+
+            <form id="order-form" class="form-block">
+              <h3>Order</h3>
+              <div class="field-row">
+                <label>User ID<input name="user_id" type="number" min="1" value="1" required></label>
+                <label>Product ID<input name="product_id" type="number" min="1" value="1" required></label>
+              </div>
+              <label>Quantity<input name="quantity" type="number" min="1" value="1" required></label>
+              <button type="submit">Create Order</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="panel overview-panel" aria-labelledby="overview-title">
+          <div class="panel-head">
+            <h2 id="overview-title">Overview</h2>
+            <button id="sync-button" type="button">Sync Notifications</button>
+          </div>
+          <div class="metric-grid">
+            <div class="metric"><span>Users</span><strong id="metric-users">0</strong></div>
+            <div class="metric"><span>Products</span><strong id="metric-products">0</strong></div>
+            <div class="metric"><span>Orders</span><strong id="metric-orders">0</strong></div>
+            <div class="metric"><span>Queued</span><strong id="metric-notifications">0</strong></div>
+          </div>
+          <div class="activity" id="activity-log" aria-live="polite"></div>
+        </section>
+
+        <section class="panel data-panel">
+          <div class="tabs" role="tablist" aria-label="Data views">
+            <button class="tab is-active" data-tab="users" type="button" role="tab">Users</button>
+            <button class="tab" data-tab="products" type="button" role="tab">Products</button>
+            <button class="tab" data-tab="orders" type="button" role="tab">Orders</button>
+            <button class="tab" data-tab="notifications" type="button" role="tab">Notifications</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead id="table-head"></thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/assets/app.js"></script>
+  </body>
+</html>

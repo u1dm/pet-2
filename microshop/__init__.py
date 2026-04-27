@@ -1,0 +1,1 @@
+"""MicroShop sample microservice application."""
