@@ -56,6 +56,21 @@ curl -s http://127.0.0.1:8080/notifications
 
 Ports can be overridden with `GATEWAY_PORT`, `USERS_PORT`, `CATALOG_PORT`, `ORDERS_PORT` and `NOTIFICATIONS_PORT`.
 
+For containers, bind services to all interfaces:
+
+```text
+MICROSHOP_BIND_HOST=0.0.0.0
+```
+
+For multi-container runs, set upstream hosts to service DNS names:
+
+```text
+USERS_HOST=users
+CATALOG_HOST=catalog
+ORDERS_HOST=orders
+NOTIFICATIONS_HOST=notifications
+```
+
 ## Tests
 
 ```bash

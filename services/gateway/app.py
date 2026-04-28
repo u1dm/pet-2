@@ -78,7 +78,7 @@ def router() -> Router:
 
 def main() -> None:
     cfg = SERVICES["gateway"]
-    serve("gateway", cfg.host, cfg.port, router())
+    serve("gateway", cfg.bind_host, cfg.port, router())
 
 
 if __name__ == "__main__":

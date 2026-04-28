@@ -97,7 +97,7 @@ def router() -> Router:
 
 def main() -> None:
     cfg = SERVICES["orders"]
-    serve("orders", cfg.host, cfg.port, router())
+    serve("orders", cfg.bind_host, cfg.port, router())
 
 
 if __name__ == "__main__":

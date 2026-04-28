@@ -84,7 +84,7 @@ def router() -> Router:
 
 def main() -> None:
     cfg = SERVICES["notifications"]
-    serve("notifications", cfg.host, cfg.port, router())
+    serve("notifications", cfg.bind_host, cfg.port, router())
 
 
 if __name__ == "__main__":

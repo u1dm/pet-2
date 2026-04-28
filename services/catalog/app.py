@@ -110,7 +110,7 @@ def router() -> Router:
 
 def main() -> None:
     cfg = SERVICES["catalog"]
-    serve("catalog", cfg.host, cfg.port, router())
+    serve("catalog", cfg.bind_host, cfg.port, router())
 
 
 if __name__ == "__main__":

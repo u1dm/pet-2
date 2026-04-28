@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microshop
+spec:
+  selector:
+    matchLabels:
+      app: microshop
+  template:
+    metadata:
+      labels:
+        app: microshop
+    spec:
+      containers:
+      - name: microshop
+        image: microshop:latest
